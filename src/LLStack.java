@@ -71,10 +71,10 @@ public class LLStack {
 	 */
 	public int size( ) {
 		int count = 0;
-		// Counts only non null Nodes
-		while(head != null) {
+		Node tempNode = head;
+		while(tempNode != null) {
 			count++;
-			head = head.next;
+			tempNode = tempNode.next;
 		}
 		return count;
 	}
@@ -134,21 +134,21 @@ public class LLStack {
 	 * list of links is empty;
 	 */
 	public boolean isEmpty( ) {
-		boolean empty = true;
-		while(head != null) {
-			empty = false;
-		}
-		return empty;
+		return head != null;
 	}
 
 	/**
-	 * 
+	 * Clears out the list of objects from the list.
 	 */
 	public void clear( ) {
-		// to do
+		while(head != null) {
+			head = head.next;
+		}
 	}
-	// For two lists to be equal they must contain the same data items in
-	// the same order. The equals method of T is used to compare data items.
+	/**
+	 * For two lists to be equal they must contain the same data items in
+	 * the same order. The equals method of T is used to compare data items.
+	 * */
 	public boolean equals(Object otherObject) {
 		if (otherObject == null)
 			return false;
@@ -171,8 +171,6 @@ public class LLStack {
 			return true;      // objects are the same
 		}
 	}
-
-	// There is no need to modify the driver
 	/**
 	 * @param args
 	 */

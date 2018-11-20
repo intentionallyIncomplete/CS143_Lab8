@@ -3,61 +3,109 @@
  * Author: Meng Yang
  * Date: Fall 2018
  */
-
 public class LLQueue {
-	// This is an inner class specifically utilized for LLStack class,
-	// thus no setter or getters are needed
+	/**
+	 * This is an inner class specifically utilized for LLStack class,
+	 * thus no setter or getters are needed
+	 * */
 	private class Node {
+		/**
+		 * Inner-class, Node, data members
+		 * */
 		private Object data;
 		private Node next;
 
-		// Constructor with no parameters for inner class
+		/**
+		 * Constructor for inner- class takes no arguments. 
+		 * Sets data and reference link to null.
+		 * */
 		public Node() {
-
+			this.data = null;
+			this.next = null;
 		}
 
-		// Parametrized constructor for inner class
+		/**
+		 * @param newData
+		 * @param nextLink
+		 * 
+		 * Parameterized constructor for inner class
+		 */
 		public Node(Object newData, Node nextLink) {
-			// to do: Data part of Node is an Object
-			// to do: Link to next node is a type Node
+			this.data = newData;
+			this.next = nextLink;
 		}
 	}
 
+	/**
+	 * Class data members for LLQueue
+	 * */
 	private Node front;
 	private Node back;
 
+	/**
+	 * Constructor for LLQueue. Takes no arguments sets front to null
+	 * and the back to null. Basically an empty list.
+	 */
 	public LLQueue() {
-		// to do
+		this.front = null;
+		this.back = null;
 	}
 
-	//offer(enqueue) adds the object at the back of the queue
+	/**
+	 * @param o - An Object. Can be anything.
+	 * Offer(enqueue) adds the object at the back of the queue
+	 * */
 	public void offer(Object o) {
-		// to do
+		back = new Node(o,back);
 	}
 
-	//poll(dequeue): retrieves and removes the head of this queue, 
-	//or returns null if this queue is empty.
+	/**
+	 * Poll(dequeue): retrieves and removes the head of this queue, 
+	 * or returns null if this queue is empty.
+	 * */
 	public Object poll() {
-		// to do
+		if(front != null) {
+			front = front.next;
+		}else {
+			return null;
+		}
+		return front;
 	}
 
-	// Returns the size of linked list by traversing the list
+	/**
+	 * @returns - Returns the size of linked list by traversing the list
+	 * */
 	public int size() {
-		// to do
+		int count = 0;
+		Node tempNode = front;
+		while(tempNode != null) {
+			count++;
+			tempNode = tempNode.next;
+		}
+		return count;
 	}
-	//peek: Retrieves, but does not remove, the head of this queue, 
-	//or returns null if this queue is empty.
+	/**
+	 * @return - Returns the first item in the queue
+	 * peek: Retrieves, but does not remove, the head of this queue, 
+	 * or returns null if this queue is empty.
+	 * */
 	public Object peek() {
-		// to do
+		return front;
 	} 
 
-	//
+	/**
+	 * @return - Returns boolean condition depending on if the queue has any members
+	 * in it.
+	 * */
 	public boolean isEmpty() {
-		// to do
+		return front != null;
 	} 
 
-	// For two lists to be equal they must contain the same data items in
-	// the same order. The equals method of T is used to compare data items.
+	/**
+	 * @param otherObject - Any object of any type.
+	 * For two lists to be equal they must contain the same data items in
+	 * the same order. The equals method of T is used to compare data items.
+	 * */
 	public boolean equals(Object otherObject) {
 		if (otherObject == null)
 			return false;
@@ -129,7 +177,4 @@ public class LLQueue {
 		}
 
 	}
-
-
-
 }
